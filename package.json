@@ -1,0 +1,30 @@
+{
+  "name": "glad-app",
+  "version": "0.0.1",
+  "description": "## Web App for Genetics of Latin American Diversity Project",
+  "main": "",
+  "scripts": {
+    "dev": "cross-env TAILWIND_MODE=watch NODE_ENV=development postcss ./app/static/src/css/tailwind.css -o ./app/static/dist/css/main.css -w",
+    "build:prod": "cross-env TAILWIND_MODE=build NODE_ENV=production postcss ./app/static/src/css/tailwind.css -o ./app/static/dist/css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://https://github.com/umb-oconnorgroup/glad-app.git"
+  },
+  "author": "Roland Laboulaye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://https://github.com/umb-oconnorgroup/glad-app/issues"
+  },
+  "homepage": "https://https://github.com/umb-oconnorgroup/glad-app#readme",
+  "devDependencies": {
+    "@tailwindcss/jit": "^0.1.18",
+    "autoprefixer": "^10.2.6",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.0.6",
+    "postcss": "^8.3.2",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.4"
+  },
+  "dependencies": {}
+}
