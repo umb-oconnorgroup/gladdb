@@ -1,15 +1,25 @@
 import os
 
-from flask import render_template, send_file
+from flask import flash, redirect, render_template, request, send_file
 import pandas as pd
 import json
 import plotly
 import plotly.express as px
+from werkzeug.utils import secure_filename
 
 from app import app
 
+
+ALLOWED_EXTENSIONS = ["npy"]
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 @app.route("/")
 def home():
+    # os.environ.get('SECRET_KEY')
     return render_template("index.html")
 
 @app.route("/visualize")
@@ -19,9 +29,19 @@ def visualize():
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("visualize.html", graphJSON=graphJSON)
 
-@app.route("/match")
+@app.route("/match", methods=["GET", "POST"])
 def match():
-    return render_template("match.html")
+    if request.method == "POST":
+        if 'pca-file' not in request.files:
+            raise ValueError(str(request))
+            # flash('No file part')
+            return redirect(request.url)
+        file = request.files['pca-file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+        return render_template("match.html")
+    else:
+        return render_template("match.html")
 
 @app.route("/download-principal-components")
 def download_principal_components():

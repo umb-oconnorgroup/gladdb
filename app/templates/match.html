@@ -36,17 +36,54 @@
       </h2>
     </div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-10">
-    <div class="flex justify-center items-center">
-      <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/2" onclick="window.location.href='/download-principal-components'">
-        Download Principal Components
-      </button>
+  <form action="/match" method="post">
+    <div class="grid grid-flow-col grid-rows-6 grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-4 py-10">
+      <div class="flex justify-center items-center">
+        <h2 class="text-4xl font-bold mb-2 uppercase">
+          Project Your Data
+        </h2>
+      </div>
+      <div class="flex justify-center items-center">
+        <ul class="list-disc text-2xl">
+          <li>Download the principal components.</li>
+          <li>Extract the dosage of each sample for the selected variants.</li>
+          <li>Standardize the data.</li>
+          <li>Project your data onto PCAs-space with the principal components.</li>
+        </ul>
+      </div>
+      <div class="flex justify-center items-center">
+        <button class="bg-white rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/2 flex justify-center hover:bg-green-200" onclick="window.location.href='/download-principal-components'">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 20 20">
+            <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+          </svg>
+          <span class="mt-2 text-base leading-normal">&nbsp;&nbsp;Download Principal Components</span>
+        </button>
+      </div>
+      <div class="flex justify-center items-center">
+        <h2 class="text-4xl font-bold mb-2 uppercase">
+          Find Controls
+        </h2>
+      </div>
+      <div class="flex justify-center items-center">
+        <ul class="list-disc text-2xl">
+          <li>Select the distance metric you want to use for matching.</li>
+          <li>Select the number of controls you want.</li>
+          <li>Select the quality threshold you want to enforce.</li>
+          <li>Upload your PCA-projected cohort.</li>
+        </ul>
+      </div>
+      <div class="flex justify-center items-center">
+        <button class="bg-white rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/2 flex justify-center hover:bg-green-200">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 20 20">
+            <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2z"/>
+          </svg>
+          <input type="file" name="pca-file" id="upload-pca">
+        </button>
+      </div>
     </div>
     <div class="flex justify-center items-center">
-      <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/2">
-        Upload PCA-Embedded Cohort
-      </button>
+      <input type="submit" class="bg-white rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/6 flex justify-center hover:bg-green-200"/>
     </div>
-  </div>
-</body>
+    </form>
+  </body>
 </html>
