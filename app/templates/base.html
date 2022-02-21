@@ -14,8 +14,20 @@
         <title>{% for href, id, caption in pages %}{% if id == active_page %}{{ caption }}{% endif %}{% endfor %} - GLADdb</title>
         {% endblock %}
     </head>
-    <body class="flex flex-col h-screen justify-between text-gray-700 bg-white"
-        style="font-family: 'Source Sans Pro', sans-serif">
+    <body class="flex flex-col h-screen justify-between text-gray-700 bg-white" style="font-family: 'Source Sans Pro', sans-serif">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                <div class="px-6 py-2">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <strong class="font-bold">{{ message }}</strong>
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
         <header>
             <nav id="navbar">
                 <div class="container mx-auto px-6 py-2 flex justify-between items-center">
