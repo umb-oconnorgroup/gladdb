@@ -12,6 +12,12 @@
         style="font-family: 'Source Sans Pro', sans-serif">
         <header>
             <nav id="navbar">
+                {% set navigation_options = [
+                    ("/", "index", "Home"),
+                    ("/visualize", "visualize", "Visualize"),
+                    ("/match", "match", "Find Controls")
+                ] -%}
+                {% set active_page = active_page|default("index") -%}
                 <div class="container mx-auto px-6 py-2 flex justify-between items-center">
                     <a class="font-bold text-2xl lg:text-4xl" href="/">GLADdb</a>
                     <div class="block lg:hidden">
@@ -25,9 +31,9 @@
                     </div>
                     <div class="hidden lg:block">
                         <ul class="inline-flex">
-                            <li><a class="px-4 font-bold" href="/">Home</a></li>
-                            <li><a class="px-4 hover:text-gray-800" href="/visualize">Visualize</a></li>
-                            <li><a class="px-4 hover:text-gray-800" href="/match">Find Controls</a></li>
+                            {% for href, id, caption in navigation_options %}
+                            <li class="px-4"><a {% if id == active_page %} class="font-bold" {% else %} class="hover:text-gray-800" {% endif %} href="{{ href }}">{{ caption }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
