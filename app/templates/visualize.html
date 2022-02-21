@@ -2,18 +2,18 @@
 {% set active_page = "visualize" %}
 {% block content %}
 <div class="py-5" style="background: linear-gradient(90deg, #98DB95 0%, #0D5F09 100%)">
-  <div class="container mx-auto px-6 space-y-6">
-    <h2 class="text-4xl font-bold mb-2 text-white">
-      Visualize our Cohorts
-    </h2>
-  </div>
+    <div class="container mx-auto px-6 space-y-6">
+        <h2 class="text-4xl font-bold mb-2 text-white">
+            Visualize our Cohorts
+        </h2>
+    </div>
 </div>
 <div id="plot" class="plot h-full"></div>
 {% endblock %}
 {% block scripts%}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">
-  var graph = {{ graphJSON | safe}};
-  Plotly.plot("plot", graph, {});
+    var graph = {{ graphJSON | safe}};
+    Plotly.plot("plot", graph, {});
 </script>
 {% endblock %}
