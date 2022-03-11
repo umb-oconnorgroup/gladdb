@@ -1,5 +1,5 @@
 {
-  "name": "glad-app",
+  "name": "gladdb",
   "version": "0.0.1",
   "description": "## Web App for Genetics of Latin American Diversity Project",
   "main": "",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://https://github.com/umb-oconnorgroup/glad-app.git"
+    "url": "git+https://https://github.com/umb-oconnorgroup/gladdb.git"
   },
   "author": "Roland Laboulaye",
   "license": "MIT",
   "bugs": {
-    "url": "https://https://github.com/umb-oconnorgroup/glad-app/issues"
+    "url": "https://https://github.com/umb-oconnorgroup/gladdb/issues"
   },
-  "homepage": "https://https://github.com/umb-oconnorgroup/glad-app#readme",
+  "homepage": "https://https://github.com/umb-oconnorgroup/gladdb#readme",
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.18",
     "autoprefixer": "^10.4.2",
