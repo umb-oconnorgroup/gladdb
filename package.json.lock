@@ -2,7 +2,7 @@
   "name": "gladdb",
   "version": "0.0.1",
   "description": "## Web App for Genetics of Latin American Diversity Project",
-  "main": "postcss.config.js",
+  "main": "",
   "scripts": {
     "dev": "cross-env TAILWIND_MODE=watch NODE_ENV=development postcss ./app/static/src/css/tailwind.css -o ./app/static/dist/css/main.css -w",
     "build:prod": "cross-env TAILWIND_MODE=build NODE_ENV=production postcss ./app/static/src/css/tailwind.css -o ./app/static/dist/css/main.css"
@@ -26,12 +26,5 @@
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.2.19"
   },
-  "dependencies": {},
-  "keywords": [
-    "genomics",
-    "population",
-    "genetics",
-    "latin",
-    "america"
-  ]
+  "dependencies": {}
 }
