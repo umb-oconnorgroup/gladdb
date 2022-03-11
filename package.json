@@ -19,12 +19,12 @@
   "homepage": "https://https://github.com/umb-oconnorgroup/glad-app#readme",
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.18",
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.4.2",
     "cross-env": "^7.0.3",
-    "cssnano": "^5.0.6",
-    "postcss": "^8.3.2",
+    "cssnano": "^5.0.17",
+    "postcss": "^8.4.6",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.1.4"
+    "tailwindcss": "^2.2.19"
   },
   "dependencies": {}
 }

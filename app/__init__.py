@@ -4,6 +4,5 @@ from flask import Flask
 
 
 app = Flask(__name__)
-# app.secret_key = os.environ.get('SECRET_KEY')
-app.secret_key = "bigsecret"
+app.secret_key = os.environ.get('SECRET_KEY')
 from app import routes
