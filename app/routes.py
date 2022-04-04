@@ -27,11 +27,11 @@ def visualize():
 @app.route("/find-controls", methods=["GET", "POST"])
 def find_controls():
     if request.method == "POST":
-        if "file" not in request.files or len(request.files["file"].filename) == 0:
+        if "upload-pca" not in request.files or len(request.files["upload-pca"].filename) == 0:
             flash("Select a valid numpy file")
             return redirect(request.url)
         else:
-            resp = requests.post("http://localhost:5001/match", data=request.files["file"])
+            resp = requests.post("http://localhost:5001/match", data=request.files["upload-pca"])
             return resp.content, 200
     return render_template("find_controls.html")
 
