@@ -1,12 +1,10 @@
 import os
 
-from flask import flash, redirect, render_template, request, send_file, url_for, Response
+from flask import flash, redirect, render_template, request, send_file
 import pandas as pd
 import json
 import plotly
 import plotly.express as px
-import requests
-from werkzeug.utils import secure_filename
 
 from app import app
 
@@ -37,5 +35,5 @@ def find_controls():
 
 @app.route("/download-principal-components")
 def download_principal_components():
-    principal_components_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/data/Freeze1.imputed_above0.9.missing0.001.nodups_202106.sorted.biallelic.pruned_at0.5.filtered.principal_components.npy")
+    principal_components_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/data/Freeze1.imputed_above0.9.missing0.001.nodups_202106.sorted.biallelic.pruned_at0.5.filtered.pca.npy")
     return send_file(principal_components_path, attachment_filename="glad_principal_components.npy", as_attachment=True)
