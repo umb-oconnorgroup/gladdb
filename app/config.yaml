@@ -1,0 +1,4 @@
+flask:
+  secret_key: <secret-key>
+tasks:
+  data_dir: <data-dir>

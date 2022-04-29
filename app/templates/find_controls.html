@@ -8,15 +8,14 @@
         </h2>
     </div>
 </div>
-<!-- <form action="/find-controls" method="post"> -->
 <div>
-    <div class="grid grid-flow-col grid-rows-6 grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-4 py-10">
-        <div class="flex justify-center items-center">
+    <div class="md:grid md:grid-flow-col md:grid-rows-6 md:grid-cols-2 gap-4 py-10">
+        <div class="flex justify-center items-center md:row-span-1">
             <h2 class="text-4xl font-bold mb-2 uppercase">
                 Prepare Your Data
             </h2>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center md:row-span-2">
             <div class="text-2xl mx-1 md:mx-6">
                 Finding controls requires you to provide both a PCA-embedding of and allele frequencies for your cohort (no individual-level data is required).
                 <br>
@@ -25,10 +24,10 @@
                 You will have the option to either automate the process with Docker or to perform the transformations in Python.
             </div>
         </div>
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center md:row-span-3">
             <button
                 class="bg-white rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/2 flex justify-center hover:bg-green-200"
-                onclick="window.location.href='/download-principal-components'">
+                onclick="window.location.href='/download-prep'">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 20 20">
                     <path
                         d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z" />
@@ -36,22 +35,22 @@
                 <span class="mt-2 text-base leading-normal">&nbsp;&nbsp;Download Preparation Archive</span>
             </button>
         </div>
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center md:row-span-1">
             <h2 class="text-4xl font-bold mb-2 uppercase">
                 Find Controls
             </h2>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center md:row-span-2">
             <div class="text-2xl mx-1 md:mx-6">
-                Once you have prepared your data using the preparation archive, upload the PCA-embedding and allele frequencies.
+                Once you have prepared your data using the preparation archive, upload the query file containing the PCA-embedding and allele frequencies.
                 <br>
                 Before submitting your job, you can select the control matching parameters.
             </div>
         </div>
-        <form method="post" class="space-y-4 mx-1 md:mx-6" enctype="multipart/form-data">
+        <form method="post" class="space-y-4 mx-1 md:mx-6 md:row-span-3" enctype="multipart/form-data">
             <div class="grid grid-cols-5 gap-y-6 flex justify-center items-center">
                 <div class="col-span-1">
-                    PCA
+                    Query File
                 </div>
                 <div class="col-span-4">
                     <button class="bg-white rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-1/2 flex justify-center hover:bg-green-200">
@@ -59,20 +58,28 @@
                             <path
                                 d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2z" />
                         </svg>
-                        <input type="file" name="upload-pca" id="upload-pca">
+                        <input type="file" name="query-file" id="query-file">
                     </button>
                 </div>
                 <div class="col-span-1">
-                    MAF
+                    Email Address
                 </div>
                 <div class="col-span-4">
-                    <button class="bg-white rounded-full py-4 px-8 shadow-lg uppercase tracking-wider w-3/4 flex justify-center hover:bg-green-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 20 20">
-                            <path
-                                d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2z" />
-                        </svg>
-                        <input type="file" name="upload-maf" id="upload-maf">
-                    </button>
+                    <input class="shadow appearance-none border rounded w-full py-4 px-8 w-1/2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" id="email" type="text">
+                </div>
+                <div class="col-span-1">
+                    Self-Described Latino Only
+                </div>
+                <div class="col-span-4">
+                    <input class="" type="checkbox" value="True" name="self-described" id="self-described">
+                </div>
+                <div class="col-span-1">
+                    Exclude PHS
+                    <br>
+                    (comma separate if >1)
+                </div>
+                <div class="col-span-4">
+                    <input class="shadow appearance-none border rounded w-full py-4 px-8 w-1/2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="exclude-phs" id="exclude-phs" type="text">
                 </div>
                 <div class="col-span-1">
                     N Controls
