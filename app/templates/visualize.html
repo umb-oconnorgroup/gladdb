@@ -8,6 +8,9 @@
         </h2>
     </div>
 </div>
+<div class="p-6 text-2xl lg:text-4xl" href="/visualize">
+    Select <a class="{{'font-bold' if embedding == 'UMAP'}}" href="/visualize/UMAP">UMAP</a> or <a class="{{'font-bold' if embedding == 'PCA'}}" href="/visualize/PCA">PCA</a>
+</div>
 <div id="plot" class="plot h-full"></div>
 {% endblock %}
 {% block scripts%}

@@ -20,13 +20,17 @@ with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.yaml"
 def home():
     return render_template("index.html")
 
+@app.route("/visualize/<embedding>")
 @app.route("/visualize")
-def visualize():
+def visualize(embedding="UMAP"):
+    if embedding not in ["UMAP", "PCA"]:
+        embedding = "UMAP"
     df = pd.read_csv(os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/plotable.csv"), index_col=0)
-    fig = px.scatter(df, x='UMAP2d 1', y='UMAP2d 2', color="Cohort", symbol=None, hover_name=df.index, hover_data=['Population', 'Country', 'State', 'City', 'Sex', 'Ethnicity'], render_mode='webgl')
+    df = df.fillna("Missing")
+    fig = px.scatter(df, x=embedding+"1", y=embedding+"2", color="PHS", symbol=None, hover_name=df.index, hover_data=["PHS", "Country", "State", "City", "Sex", "SelfDescribedStatus", "HispanicJustification"], render_mode="webgl")
     fig.update_layout(height=800)
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template("visualize.html", graphJSON=graphJSON)
+    return render_template("visualize.html", embedding=embedding, graphJSON=graphJSON)
 
 @app.route("/find-controls", methods=["GET", "POST"])
 def find_controls():
