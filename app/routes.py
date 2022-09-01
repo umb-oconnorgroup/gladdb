@@ -55,6 +55,13 @@ def find_controls():
             task_id = str(uuid.uuid1())
             task_data_dir = config["tasks"]["data_dir"]
             os.makedirs(os.path.join(task_data_dir, task_id))
+            # verify that uploaded file does not exceed size limit
+            request.files["query-file"].seek(0, 2)
+            file_size = request.files["query-file"].tell()
+            request.files["query-file"].seek(0)
+            if file_size > 1e8:
+                flash("Your query.npz file exceeds the 100MB size limit")
+                return redirect(request.url)
             request.files["query-file"].save(os.path.join(task_data_dir, task_id, "query.npz"))
             with open(os.path.join(task_data_dir, task_id, "params.json"), "w") as params_file:
                 json.dump(request.form, params_file)
@@ -72,6 +79,4 @@ def download_results(task_id):
 
 @app.route("/download-prep")
 def download_prep():
-    # principal_components_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/data/Freeze1.imputed_above0.9.missing0.001.nodups_202106.sorted.biallelic.pruned_at0.5.filtered.pca.npy")
-    # return send_file(principal_components_path, attachment_filename="glad_principal_components.npy", as_attachment=True)
     return redirect("https://github.com/umb-oconnorgroup/gladprep")
