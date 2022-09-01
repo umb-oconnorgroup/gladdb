@@ -1,4 +1,7 @@
 flask:
-  secret_key: <secret-key>
+  secret_key: <flask-secret-key>
+xcaptcha:
+  site_key: <xcaptcha-site-key>
+  secret_key: <xcaptcha-secret-key>
 tasks:
   data_dir: <data-dir>

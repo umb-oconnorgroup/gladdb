@@ -135,3 +135,6 @@ node_modules
 app/static/*.npy
 app/static/*.zarr
 app/static/*.csv
+
+# Task Data
+task_data/

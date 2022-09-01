@@ -3,6 +3,7 @@ import os
 import uuid
 
 from flask import flash, redirect, render_template, request, send_file
+from flask_xcaptcha import XCaptcha
 import pandas as pd
 import json
 import plotly
@@ -15,6 +16,12 @@ from app import app
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.yaml"), "r") as config_file:
     config = yaml.safe_load(config_file)
 
+app.config['XCAPTCHA_SITE_KEY'] = config["xcaptcha"]["site_key"]
+app.config['XCAPTCHA_SECRET_KEY'] = config["xcaptcha"]["secret_key"]
+app.config['XCAPTCHA_VERIFY_URL'] = "https://hcaptcha.com/siteverify"
+app.config['XCAPTCHA_API_URL'] = "https://hcaptcha.com/1/api.js"
+app.config['XCAPTCHA_DIV_CLASS'] = "h-captcha"
+xcaptcha = XCaptcha(app=app)
 
 @app.route("/")
 def home():
@@ -40,6 +47,9 @@ def find_controls():
             return redirect(request.url)
         if "email" not in request.form or len(request.form["email"]) == 0:
             flash("Please enter a valid email address to receive notification of completion")
+            return redirect(request.url)
+        if not xcaptcha.verify():
+            flash("Please complete the captcha")
             return redirect(request.url)
         else:
             task_id = str(uuid.uuid1())
