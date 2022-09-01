@@ -54,9 +54,20 @@
             {% block content %}{% endblock %}
         </main>
         <footer>
-            <div class="px-8">
+            <div class="px-12">
                 {% block footer %}
-                2022 - O'Connor Lab - University of Maryland Institute for Genome Sciences
+                <div class="grid md:grid-cols-2 border-t-2 border-gray-800 py-4">
+                    <div>
+                        <a class="float-left" href="https://sites.google.com/view/oconnorgroup/home">
+                            <img src="../static/lab-logo.png" alt="..." class="rounded w-auto h-52 border-none" />
+                        </a>
+                    </div>
+                    <div>
+                        <a class="float-right" href="https://www.igs.umaryland.edu/">
+                            <img src="../static/igs-logo.jpg" alt="..." class="rounded w-auto h-28 border-none" />
+                        </a>
+                    </div>
+                </div>
                 {% endblock %}
             </div>
         </footer>
