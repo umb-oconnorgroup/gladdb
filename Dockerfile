@@ -29,11 +29,10 @@ RUN yum install -y https://download-ib01.fedoraproject.org/pub/epel/8/Everything
 RUN yum install -y https://download-ib01.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/p/python3-dataclasses-0.8-3.el8.noarch.rpm
 RUN yum install -y https://download-ib01.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/p/python3-typing-extensions-3.7.4.3-2.el8.noarch.rpm
 RUN yum install -y python3-mod_wsgi
-#httpd
 
 COPY requirements.txt .
 RUN mkdir ./lib
-#RUN /usr/bin/pip3 install -t lib -r requirements.txt
+RUN /usr/bin/pip3 install --no-dependencies -t lib -r requirements.txt
 
 COPY *json* ./
 COPY *.js ./
@@ -41,6 +40,3 @@ RUN npm install .
 
 COPY . .
 
-#ENV PYTHONPATH "${PYTHONPATH}:/usr/bin/python3"
-
-#CMD python prep.py
