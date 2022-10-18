@@ -10,7 +10,7 @@ import plotly
 import plotly.express as px
 import yaml
 
-from app import app
+from starter import app
 
 
 with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.yaml"), "r") as config_file:
@@ -34,7 +34,7 @@ def visualize(embedding="UMAP"):
         embedding = "UMAP"
     df = pd.read_csv(os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/plotable.csv"), index_col=0)
     df = df.fillna("Missing")
-    fig = px.scatter(df, x=embedding+"1", y=embedding+"2", color="PHS", symbol=None, hover_name=df.index, hover_data=["PHS", "Country", "State", "City", "Sex", "SelfDescribedStatus", "HispanicJustification"], render_mode="webgl")
+    fig = px.scatter(df, x=embedding+"1", y=embedding+"2", color="PHS", symbol=None, hover_name=df.index, hover_data=["PHS", "Country", "State", "Sex", "SelfDescribedStatus", "HispanicJustification"], render_mode="webgl")
     fig.update_layout(height=800)
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("visualize.html", embedding=embedding, graphJSON=graphJSON)

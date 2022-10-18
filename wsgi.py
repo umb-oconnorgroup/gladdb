@@ -1,6 +1,6 @@
 import sys
-sys.path.insert(0,'/export/gladdb')
-from app import app
+
+from starter import app as application
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    application.run(debug=False)
