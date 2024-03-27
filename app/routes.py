@@ -29,7 +29,7 @@ def home():
 
 @app.route("/visualize/<embedding>")
 @app.route("/visualize")
-def visualize(embedding="UMAP"):
+def visualize(embedding="PCA"):
     if embedding not in ["UMAP", "PCA"]:
         embedding = "UMAP"
     df = pd.read_csv(os.path.join(os.path.abspath(os.path.dirname(__file__)), "static/plotable.csv"), index_col=0)
